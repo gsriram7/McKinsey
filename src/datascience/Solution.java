@@ -38,7 +38,6 @@ public class Solution {
 
         int c = 0;
         for (String tst : timestamps) {
-
             Date td = sdf.parse(tst.split(" ")[0]);
             if (stdt.compareTo(td) <= 0 && eddt.compareTo(td) >= 0) {
                 float avg = 0;
@@ -49,18 +48,13 @@ public class Solution {
                     Date kd = sdf.parse(knownTimestamps[i].split(" ")[0]);
 
                     if (kt.compareTo(tt) <= 0 && kd.compareTo(td) <= 0) {
-
                         avg += humidity[i];
                         count++;
                     }
                 }
-                if (count != 0)
-                    res[c] = avg / count;
-                else
-                    res[c] = 0;
+                if (count != 0) res[c] = avg / count; else res[c] = 0;
                 c++;
             }
-
         }
 
         return res;
