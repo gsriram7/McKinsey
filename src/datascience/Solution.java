@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 
-public class Temperature {
+public class Solution {
 
     // Fixed Timeout error. Runs in O(nlogn) instead of O(n^2)
     static int[] jobOffers(int[] scores, int[] lowerLimits, int[] upperLimits) {
@@ -14,17 +14,13 @@ public class Temperature {
 
         TreeMap<Integer, Integer> map = new TreeMap<>();
 
-        for (int s: scores)
+        for (int s : scores)
             map.put(s, map.getOrDefault(s, 0) + 1);
-
 
         for (int i = 0; i < lowerLimits.length; i++) {
             NavigableMap<Integer, Integer> submap = map.subMap(lowerLimits[i], true, upperLimits[i], true);
-
             int count = 0;
-
             for (Integer j : submap.values()) count += j;
-
             res[i] = count;
         }
 
